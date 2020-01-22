@@ -1,159 +1,125 @@
 <?php
-// Задание 1
-echo "Задание 1<br>";
-
-$a = rand(-1000,1000);
-$b = rand(-1000,1000);
-echo "a = $a<br>b = $b<br>";
-
-if (gettype($a) != "integer" || gettype($b) != "integer") {
-    echo "please, enter integers<br>";
-} else if ($a >= 0 && $b >= 0) {
-    echo "a - b = " . ($a-$b)."<br>";
-} else if ($a < 0 && $b < 0) {
-    echo "a * b = " . ($a*$b)."<br>";
-} else {
-    echo "a + b = " . ($a+$b)."<br>";
+//Задание 1
+echo "<h3>Задание 1</h3>";
+$i = 0;
+while ($i <= 100) {
+    if (($i % 3) == 0) {
+        echo "$i ";
+    }
+    $i++;
 }
 
+//Задание 2
+echo "<h3>Задание 2</h3>";
+$i = 0;
 
-// Задание 2
-echo "<br>Задание 2<br>";
-
-$a = rand(0, 15);
-echo "our number is $a <br>";
-
-switch($a){
-    case 0:
-        echo $a++." ";
-    case 1:
-        echo $a++." ";
-    case 2:
-        echo $a++." ";
-    case 3:
-        echo $a++." ";
-    case 4:
-        echo $a++." ";
-    case 5:
-        echo $a++." ";
-    case 6:
-        echo $a++." ";
-    case 7:
-        echo $a++." ";
-    case 8:
-        echo $a++." ";
-    case 9:
-        echo $a++." ";
-    case 10:
-        echo $a++." ";
-    case 11:
-        echo $a++." ";
-    case 12:
-        echo $a++." ";
-    case 13:
-        echo $a++." ";
-    case 14:
-        echo $a++." ";
-    case 15:
-        echo "$a <br>";
-    break;
-    default:
-    echo "not a number";
-}
-
-// Задание 3
-function sum($a, $b){
-    return $a + $b;
-}
-
-function sub($a,$b){
-    return $a - $b;
-}
-
-function mul($a, $b){
-    return $a * $b;
-}
-
-function div($a, $b){
-    if ($b !== 0) {
-        return $a/$b;
+function chet($i){
+    if ($i == 0) {
+        return "$i - это ноль<br>";
+    }
+    if ($i % 2) {
+        return "$i - нечетное число<br>";
     } else {
-        echo "second number can't be zero";
+        return "$i - четное число<br>";
     }
 }
 
-// Задание 4
-echo "<br>Задание 3,4<br>";
+do {
+    echo chet($i);
+} while (++$i <= 10);
 
-$num1 = rand(-1000,1000);
-$num2 = rand(-1000,1000);
-$opArr = array("+", "-", "*", "/");
-$op = $opArr[rand(0,3)];
+//Задание 3
+echo "<h3>Задание 3</h3>";
 
-echo "($num1) $op ($num2) = ";
+$arr = [
+    "Московская область" => ["Москва", "Зеленоград", "Клин"],
+    "Ленинградская область" => ["Санкт-Петербург", "Всеволожск", "Павловск", "Кронштадт"],
+    "Рязанская область" => ["Рязань", "Касимов", "Скопин", "Сасово", "Ряжск"],
+    "Ростовская область" => ["Ростов-на-Дону", "Таганрог", "Шахты", "Волгодонск"]
+];
 
-function mathOperation($arg1, $arg2, $operation){
-    switch($operation){
-        case '+':
-            return sum($arg1, $arg2);
-            break;
-        case '-':
-            return sub($arg1, $arg2);
-            break;
-        case '*':
-            return mul($arg1, $arg2);
-            break;
-        case '/':
-            return div($arg1, $arg2);
-            break;
+foreach ($arr as $area => $cities){
+    echo "$area:<br>";
+    foreach ($cities as $key => $city){
+        ($key < count($cities) - 1) ? $str = "$city, " : $str = "$city<br>";
+        echo $str;
     }
 }
 
-echo mathOperation($num1, $num2, $op)."<br>";
+//Задание 4
+echo "<h3>Задание 4</h3>";
+$arr = ["а" => "a", "б" => "b", "в" => "v", "г" => "g", "д" => "d", "е" => "e", "ё" => "yo", "ж" => "zh", "з" => "z", "и" => "i", "й" => "y", "к" => "k", "л" => "l", "м" => "m", "н" => "n", "о" => "o", "п" => "p", "р" => "r", "с" => "s", "т" => "t", "у" => "u", "ф" => "f", "х" => "h", "ц" => "c", "ч" => "ch", "ш" => "sh", "щ" => "sch", "ь" => "'", "ы" => "y", "ъ" => "", "э" => "e", "ю" => "yu", "я" => "ya", "А" => "A", "Б" => "B", "В" => "V", "Г" => "G", "Д" => "D", "Е" => "E", "Ё" => "E", "Ж" => "Zh",  "З" => "Z", "И" => "I", "Й" => "Y", "К" => "K", "Л" => "L", "М" => "M", "Н" => "N", "О" => "O", "П" => "P", "Р" => "R", "С" => "S", "Т" => "T", "У" => "U", "Ф" => "F", "Х" => "H", "Ц" => "C", "Ч" => "Ch",  "Ш" => "Sh",  "Щ" => "Sch", "Ь" => "",  "Ы" => "Y", "Ъ" => "", "Э" => "E", "Ю" => "Yu",  "Я" => "Ya"];
+$str = "Строка для тестирования номер 1.";
+echo $str."<br>";
+echo strtr($str, $arr);
 
-// Задание 6
-echo "<br>Задание 6<br>";
+//Задание 5
+echo "<h3>Задание 5</h3>";
+$str = "Строка для тестирования номер 2.";
 
-function power($val, $pow){
-    if ($pow === 0) return 1;
-    if ($pow != 1){
-        $pow--;
-        return $val * power($val, $pow);
-    }
-    return $val;
+function replace($str){
+    $newStr = str_replace(" ", "_", $str);
+    return $newStr;
 }
 
-echo power(11,2)."<br>";
+echo replace($str);
 
-// Задание 7
-echo "<br>Задание 7<br>";
-
-$h = date("H");
-$m = date("i");
-
-function hourTransform($h){
-    if ($h==1 || $h==21) {
-        $str = " час";
-    } else if (($h>=2 && $h<=4) || ($h>=22 && $h<=24)) {
-        $str = " часа";
-    } else {
-        $str = " часов";
+//Задание 6
+echo "<h3>Задание 6</h3>";
+$menu = [
+    "Главная",
+    "Запчасти" => ["Двигатели", "Системы зажигания", "Томозные системы", "Фильтры"],
+    "Шины" => ["Yokohama", "Triangle", "Nokian", "TOYO"],
+    "Контакты"
+];
+$ul = "<ul>";
+foreach ($menu as $key => $items){
+    if (gettype($items) == "array") {
+        $ul .= "<li><a href='#'>$key</a><ul>";
+        foreach ($items as $item){
+            $ul .= "<li><a href='#'>$item</a></li>";
+        }
+        $ul .= "</ul></li>";
     }
-    return $str;
+    else $ul .= "<li><a href='#'>$items</a></li>";
+}
+$ul .= "</ul>";
+echo $ul;
+
+//Задание 7
+echo "<h3>Задание 7</h3>";
+
+for ($i = 0; $i <= 9; print $i++." "){
+
 }
 
-function minuteTransform($m){
-    if ($m > 10 && $m < 20){
-        $str = " минут";
-    } else if (($m % 10) === 1) {
-        $str = " минута";
-    } else if ((($m % 10) >= 2) && (($m % 10) <= 4)){
-        $str = " минуты";
-    } else {
-        $str = " минут";
+//Задание 8
+echo "<h3>Задание 8</h3>";
+$arr = [
+    "Московская область" => ["Москва", "Зеленоград", "Клин"],
+    "Ленинградская область" => ["Санкт-Петербург", "Всеволожск", "Павловск", "Кронштадт"],
+    "Рязанская область" => ["Рязань", "Касимов", "Скопин", "Сасово", "Ряжск"],
+    "Ростовская область" => ["Ростов-на-Дону", "Таганрог", "Шахты", "Волгодонск"]
+];
+
+foreach ($arr as $area => $cities){
+    foreach ($cities as $key => $city){
+        if (mb_substr($city, 0, 1) == 'К'){
+            echo "$city\n";
+        }
     }
-    return $str;
 }
 
-echo "$h ".hourTransform($h)." $m ".minuteTransform($m);
+//Задание 9
+echo "<h3>Задание 9</h3>";
+$str = "Строка для тестирования номер 3.";
+echo $str."<br>";
+
+function transform($string){
+    $array = ["а" => "a", "б" => "b", "в" => "v", "г" => "g", "д" => "d", "е" => "e", "ё" => "yo", "ж" => "zh", "з" => "z", "и" => "i", "й" => "y", "к" => "k", "л" => "l", "м" => "m", "н" => "n", "о" => "o", "п" => "p", "р" => "r", "с" => "s", "т" => "t", "у" => "u", "ф" => "f", "х" => "h", "ц" => "c", "ч" => "ch", "ш" => "sh", "щ" => "sch", "ь" => "'", "ы" => "y", "ъ" => "", "э" => "e", "ю" => "yu", "я" => "ya", "А" => "A", "Б" => "B", "В" => "V", "Г" => "G", "Д" => "D", "Е" => "E", "Ё" => "E", "Ж" => "Zh",  "З" => "Z", "И" => "I", "Й" => "Y", "К" => "K", "Л" => "L", "М" => "M", "Н" => "N", "О" => "O", "П" => "P", "Р" => "R", "С" => "S", "Т" => "T", "У" => "U", "Ф" => "F", "Х" => "H", "Ц" => "C", "Ч" => "Ch",  "Ш" => "Sh",  "Щ" => "Sch", "Ь" => "",  "Ы" => "Y", "Ъ" => "", "Э" => "E", "Ю" => "Yu",  "Я" => "Ya", " " => "_"];
+    // $newStr = strtr($str, $arr);
+    return strtr($string, $array);
+}
+
+echo transform($str);
 ?>
